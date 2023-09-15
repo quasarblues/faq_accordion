@@ -1,0 +1,242 @@
+:root {
+  /* Primary text colors */
+  --text-blue: hsl(238, 29%, 16%);
+  --text-dk-blue: hsl(240, 6%, 50%);
+  --text-xdkblue: hsl(237, 12%, 33%);
+  --text-red: (14, 88%, 65%);
+
+  /* Background grdient */
+  --soft-violet: #af67e9;
+  --soft-blue: #6565e7;
+
+  /* dividers */
+  --divider-blue: hsl(240, 5%, 91%);
+
+  /* Typoraphy */
+  --main-font-size: 12px;
+  --main-font-fam: 'Kumbh Sans', sans-serif;
+  --weight-regular: 400;
+  --weight-bold: 700;
+}
+
+/* CSS reset */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+    8. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Main content */
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(175, 103, 233, 1) 0%, rgba(108, 101, 231, 1) 91%);
+  font-family: var(--main-font-fam);
+  padding: 10rem 1.2rem;
+  color: var(--text-blue);
+}
+
+.card {
+  background: white;
+  border-radius: 2rem;
+  max-width: 56rem;
+  padding: 2.875rem 1.5rem;
+  background-image: url(images/bg-pattern-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: center 0%;
+  background-size: 15rem;
+}
+
+.card__box {
+  display: none;
+}
+
+.card__image {
+  position: relative;
+}
+
+.card__image img {
+  position: absolute;
+  top: -7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 15rem;
+}
+
+.card__text {
+  padding-top: 7rem;
+}
+
+.accordion__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-blue);
+  font-size: 1rem;
+  font-family: var(--main-font-fam);
+  font-weight: var(--weight-regular);
+  text-align: left;
+}
+
+.accordion__item {
+  margin-top: 1rem;
+  border-bottom: 1px solid var(--divider-blue);
+}
+
+.accordion__question::after {
+  content: '';
+  display: block;
+  width: 0.625rem;
+  height: 1rem;
+  background-image: url('images/icon-arrow-down.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  transition: all 400ms ease-in-out;
+}
+
+.accordion__question:focus {
+  outline-color: red;
+}
+
+.accordion__question.open {
+  font-weight: var(--weight-bold);
+}
+
+.accordion__question.open::after {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+
+.accordion__collapse.collapse {
+  display: none;
+}
+
+.accordion__collapse.open {
+  display: block;
+}
+
+/* DESKTOP STYLES */
+@media(min-width: 56em) {
+
+  body {
+    padding: 5rem;
+  }
+
+  .card {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    padding: 4.375rem 6.25rem 4.375rem 0;
+    background-image: url(images/bg-pattern-desktop.svg);
+    background-size: 45%;
+    background-position: -13% center;
+  }
+
+  .card__image,
+  .card__text {
+    flex: 1;
+  }
+
+  .card__text {
+    padding-top: 0;
+  }
+
+  .card__image {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .card__image img {
+    position: static;
+    transform: translateX(-4rem);
+    max-width: 25rem;
+  }
+
+  .card__box {
+    display: block;
+    height: auto;
+    position: absolute;
+    top: 40.5%;
+    left: -14.5%;
+    z-index: 1;
+  }
+}
